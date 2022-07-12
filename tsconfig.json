@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "target": "es6",
+    "incremental": true,
+  },
+  "include": [ "src/**/*.ts" ],
+  "exclude": ["node_modules"]
+}

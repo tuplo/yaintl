@@ -1,0 +1,90 @@
+{
+	"name": "@tuplo/intlite",
+	"version": "1.0.0",
+	"main": "index.js",
+	"license": "MIT",
+	"scripts": {
+		"build": "bash sh/build.sh",
+		"coverage": "bash sh/coverage.sh",
+		"lint:ts": "tsc --noEmit",
+		"lint": "eslint src --ext ts,tsx",
+		"test:ci": "bash sh/test-ci.sh",
+		"test": "bash sh/test.sh"
+	},
+	"devDependencies": {
+		"@typescript-eslint/eslint-plugin": "5.30.6",
+		"@typescript-eslint/parser": "5.30.6",
+		"esbuild": "0.14.49",
+		"eslint": "8.19.0",
+		"eslint-config-airbnb-base": "15.0.0",
+		"eslint-config-prettier": "8.5.0",
+		"eslint-plugin-import": "2.26.0",
+		"eslint-plugin-jest": "26.5.3",
+		"jest": "28.1.2",
+		"nyc": "15.1.0",
+		"prettier": "2.7.1",
+		"ts-jest": "28.0.5",
+		"typescript": "4.7.4"
+	},
+	"prettier": {
+		"singleQuote": true,
+		"trailingComma": "es5",
+		"printWidth": 80,
+		"useTabs": true
+	},
+	"eslintConfig": {
+		"extends": [
+			"airbnb-base",
+			"prettier",
+			"plugin:@typescript-eslint/recommended",
+			"plugin:import/typescript",
+			"plugin:jest/all"
+		],
+		"parser": "@typescript-eslint/parser",
+		"plugins": [
+			"@typescript-eslint",
+			"jest"
+		],
+		"parserOptions": {
+			"ecmaVersion": 9,
+			"project": "./tsconfig.json"
+		},
+		"env": {
+			"node": true,
+			"jest": true
+		},
+		"rules": {
+			"import/prefer-default-export": "off",
+			"import/extensions": "off",
+			"import/no-extraneous-dependencies": "off",
+			"jest/prefer-expect-assertions": "off",
+			"jest/no-hooks": "off",
+			"no-restricted-syntax": [
+				"error",
+				{
+					"selector": "LabeledStatement",
+					"message": "Labels are a form of GOTO; using them makes code confusing and hard to maintain and understand."
+				},
+				{
+					"selector": "WithStatement",
+					"message": "`with` is disallowed in strict mode because it makes code impossible to predict and optimize."
+				}
+			]
+		}
+	},
+	"jest": {
+		"roots": [
+			"<rootDir>/src"
+		],
+		"transform": {
+			"^.+\\.(t|j)sx?$": "ts-jest"
+		},
+		"moduleNameMapper": {
+			"^src/(.*)": "<rootDir>/src/$1"
+		}
+	},
+	"volta": {
+		"node": "18.5.0",
+		"yarn": "1.22.19"
+	}
+}
