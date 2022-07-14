@@ -1,0 +1,37 @@
+{
+	"foo": "bar",
+	"baz": {
+		"qux": "quux"
+	},
+	"string": { "lookup": "foobar" },
+	"variables": {
+		"var1": "His name is {name}.",
+		"var2": "His name is {name} and he works as a {job}."
+	},
+	"select": {
+		"default": "{gender, select, male {He} female {She} other {They}} liked this",
+		"required": "{gender, select, other {They}} like this"
+	},
+	"plural": {
+		"format": "{count, plural, =0 {There are no results.} one {There is one result.} other {There are # results.}}",
+		"offset": "{adds, plural, offset:1 =0 {No-one has added this} =1 {You added this} one {You and one other person added this} other {You and # others added this}}"
+	},
+	"selectordinal": "You are {pos, selectordinal, one {#st} two {#nd} few {#rd} other {#th}} in the queue.",
+	"number": {
+		"default": "The default value is {count, number}.",
+		"decimal": "The default value is {count, number, decimal}.",
+		"percent": "The default value is {count, number, percent}."
+	},
+	"date": {
+		"short": "Sale begins {start, date, short}",
+		"medium": "Sale begins {start, date, medium}",
+		"long": "Sale begins {start, date, long}",
+		"full": "Sale begins {start, date, full}"
+	},
+	"time": {
+		"short": "Coupon expires at {expires, time, short}",
+		"medium": "Coupon expires at {expires, time, medium}",
+		"long": "Coupon expires at {expires, time, long}",
+		"full": "Coupon expires at {expires, time, full}"
+	}
+}

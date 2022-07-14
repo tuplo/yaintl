@@ -1,1 +1,1 @@
-# @tuplo/intlite
+# @tuplo/yaintl
