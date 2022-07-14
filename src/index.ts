@@ -11,21 +11,30 @@ import { getOrdinal } from './helpers/ordinal';
 
 type Value = string | number | boolean | Date | string[] | number[];
 
+export type Formats = {
+	number?: Record<string, Intl.NumberFormatOptions>;
+	dateTime?: Record<string, Intl.DateTimeFormatOptions>;
+	list?: Record<string, Intl.ListFormatOptions>;
+};
+
 type Args = {
 	locale: string;
 	messages: object;
+	formats?: Formats;
 };
 
 export default class I18n {
 	#locale: string;
 	#messages: object;
+	#formats?: Formats;
 	#parser: Parser;
 
 	constructor(args: Args) {
-		const { locale, messages } = args;
+		const { locale, messages, formats } = args;
 
 		this.#locale = locale;
 		this.#messages = messages;
+		this.#formats = formats;
 		this.#parser = new Parser();
 	}
 
@@ -86,25 +95,31 @@ export default class I18n {
 			}
 			case 'number': {
 				const n = Number(vs[value]);
-				const nf = new Intl.NumberFormat(this.#locale, {
-					style: f as Intl.NumberFormatOptions['style'],
+				const dfOptions = dlv(this.#formats || {}, `number.${f}`, {
+					style: f,
 				});
+				const nf = new Intl.NumberFormat(this.#locale, dfOptions);
 				v = nf.format(n);
 				break;
 			}
 			case 'date': {
 				const n = new Date(vs[value]);
-				const df = new Intl.DateTimeFormat(this.#locale, {
-					dateStyle: f as Intl.DateTimeFormatOptions['dateStyle'],
-				});
+				const fmt = dlv(this.#formats || {}, `dateTime.${f}`, { dateStyle: f });
+				const df = new Intl.DateTimeFormat(this.#locale, fmt);
 				v = df.format(n);
 				break;
 			}
 			case 'time': {
 				const n = new Date(vs[value]);
-				const df = new Intl.DateTimeFormat(this.#locale, {
-					timeStyle: f as Intl.DateTimeFormatOptions['timeStyle'],
-				});
+				const fmt = dlv(this.#formats || {}, `dateTime.${f}`, { timeStyle: f });
+				const df = new Intl.DateTimeFormat(this.#locale, fmt);
+				v = df.format(n);
+				break;
+			}
+			case 'list': {
+				const n = vs[value];
+				const fmt = dlv(this.#formats || {}, `list.${f}`, { timeStyle: f });
+				const df = new Intl.ListFormat(this.#locale, fmt);
 				v = df.format(n);
 				break;
 			}

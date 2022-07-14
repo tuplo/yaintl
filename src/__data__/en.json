@@ -17,21 +17,44 @@
 		"offset": "{adds, plural, offset:1 =0 {No-one has added this} =1 {You added this} one {You and one other person added this} other {You and # others added this}}"
 	},
 	"selectordinal": "You are {pos, selectordinal, one {#st} two {#nd} few {#rd} other {#th}} in the queue.",
-	"number": {
-		"default": "The default value is {count, number}.",
-		"decimal": "The default value is {count, number, decimal}.",
-		"percent": "The default value is {count, number, percent}."
+	"defaultFormats": {
+		"number": {
+			"default": "The default value is {count, number}.",
+			"decimal": "The default value is {count, number, decimal}.",
+			"percent": "The default value is {count, number, percent}."
+		},
+		"date": {
+			"short": "Sale begins {start, date, short}",
+			"medium": "Sale begins {start, date, medium}",
+			"long": "Sale begins {start, date, long}",
+			"full": "Sale begins {start, date, full}"
+		},
+		"time": {
+			"short": "Coupon expires at {expires, time, short}",
+			"medium": "Coupon expires at {expires, time, medium}",
+			"long": "Coupon expires at {expires, time, long}",
+			"full": "Coupon expires at {expires, time, full}"
+		},
+		"list": {
+			"default": "With {team, list}"
+		}
 	},
-	"date": {
-		"short": "Sale begins {start, date, short}",
-		"medium": "Sale begins {start, date, medium}",
-		"long": "Sale begins {start, date, long}",
-		"full": "Sale begins {start, date, full}"
-	},
-	"time": {
-		"short": "Coupon expires at {expires, time, short}",
-		"medium": "Coupon expires at {expires, time, medium}",
-		"long": "Coupon expires at {expires, time, long}",
-		"full": "Coupon expires at {expires, time, full}"
+	"customFormats": {
+		"number": {
+			"number1": "The value is {count, number, fmtNumber1}.",
+			"number2": "The value is {count, number, fmtNumber2}."
+		},
+		"date": {
+			"date1": "Sale begins {start, date, fmtDate1}",
+			"date2": "Sale begins {start, date, fmtDate2}"
+		},
+		"time": {
+			"time1": "Sale begins {start, date, fmtTime1}",
+			"time2": "Sale begins {start, date, fmtTime2}"
+		},
+		"list": {
+			"list1": "With {team, list, fmtList1}",
+			"list2": "With {team, list, fmtList2}"
+		}
 	}
 }
