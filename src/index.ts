@@ -42,8 +42,9 @@ export default class I18n {
 		return (key: string, values?: Record<string, Value>) => {
 			const lookup = prefix ? dlv(this.#messages, prefix) : this.#messages;
 			const message = dlv(lookup, key);
-			const parsed = this.#parser.parse(message);
+			if (!message) return [prefix, key].filter(Boolean).join('.');
 
+			const parsed = this.#parser.parse(message);
 			return parsed.map((p) => this.#resolve(p, values)).join('');
 		};
 	}
@@ -52,15 +53,9 @@ export default class I18n {
 		placeholder: Value | MessagePlaceholder,
 		values: Record<string, Value> = {}
 	): Value {
-		if (!placeholder) return '';
-
 		if (typeof placeholder !== 'object') {
 			return placeholder;
 		}
-
-		// not implemented yet
-		// @ts-expect-error foobar
-		if (placeholder.n) return '';
 
 		const {
 			v: value,
@@ -70,7 +65,6 @@ export default class I18n {
 		} = placeholder as MessageVariable;
 
 		let v: MessageAST | Value;
-
 		const vs = JSON.parse(JSON.stringify(values));
 
 		switch (type) {

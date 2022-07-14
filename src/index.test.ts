@@ -2,7 +2,7 @@ import I18n, { type Formats } from './index';
 import messages from './__data__/en.json';
 
 describe('yaintl', () => {
-	describe('simple behaviors', () => {
+	describe('simple', () => {
 		const i18n = new I18n({ locale: 'en-GB', messages });
 
 		it.each([
@@ -18,6 +18,15 @@ describe('yaintl', () => {
 			const t = i18n.build();
 			const actual = t('string.lookup');
 			expect(actual).toBe('foobar');
+		});
+
+		it.each([
+			['without prefix', undefined, 'not.found', 'not.found'],
+			['with prefix', 'not', 'found', 'not.found'],
+		])('returns the key when key not found %s', (_, prefix, key, expected) => {
+			const t = i18n.build(prefix);
+			const actual = t(key);
+			expect(actual).toBe(expected);
 		});
 
 		it.each([
