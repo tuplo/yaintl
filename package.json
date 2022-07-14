@@ -1,5 +1,6 @@
 {
 	"name": "@tuplo/yaintl",
+	"description": "Yet another i18n library with ICU message syntax",
 	"version": "0.0.0-development",
 	"repository": "git@github.com:tuplo/yaintl.git",
 	"author": "Rui Costa",
