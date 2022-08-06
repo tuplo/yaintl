@@ -130,10 +130,14 @@ describe('yaintl', () => {
 			expect(actual).toBe(expected);
 		});
 
-		it('list', () => {
+		it.each([
+			['default', 'With Alice, Bob and Charlie'],
+			['long', 'With Alice, Bob and Charlie'],
+			['short', 'With Alice, Bob and Charlie'],
+			['narrow', 'With Alice, Bob, Charlie'],
+		])('list: %s', (key, expected) => {
 			const t = i18n.build('defaultFormats.list');
-			const actual = t('default', { team: ['Alice', 'Bob', 'Charlie'] });
-			const expected = 'With Alice, Bob and Charlie';
+			const actual = t(key, { team: ['Alice', 'Bob', 'Charlie'] });
 			expect(actual).toBe(expected);
 		});
 	});
@@ -172,18 +176,18 @@ describe('yaintl', () => {
 		});
 
 		it.each([
-			['time1', 'Sale begins 00:00'],
-			['time2', 'Sale begins 00:00:00 GMT'],
+			['time1', 'Sale begins 23:30'],
+			['time2', 'Sale begins 15:30'],
 		])('time: %s', (key, expected) => {
 			const formats: Formats = {
 				dateTime: {
-					fmtTime1: { timeStyle: 'short', hour12: false },
-					fmtTime2: { timeStyle: 'long' },
+					fmtTime1: { timeStyle: 'short' },
+					fmtTime2: { timeZone: 'America/Los_Angeles', timeStyle: 'short' },
 				},
 			};
 			const i18n = new I18n({ locale: 'en-GB', messages, formats });
 			const t = i18n.build('customFormats.time');
-			const actual = t(key, { start: new Date('2022-12-25') });
+			const actual = t(key, { start: new Date('2022-12-25T23:30:00.000Z') });
 			expect(actual).toBe(expected);
 		});
 
@@ -194,7 +198,7 @@ describe('yaintl', () => {
 			const formats: Formats = {
 				list: {
 					fmtList1: { style: 'long' },
-					fmtList2: { style: 'narrow', type: 'disjunction' },
+					fmtList2: { type: 'disjunction' },
 				},
 			};
 			const i18n = new I18n({ locale: 'en-GB', messages, formats });

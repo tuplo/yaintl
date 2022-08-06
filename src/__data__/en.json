@@ -36,7 +36,10 @@
 			"full": "Coupon expires at {expires, time, full}"
 		},
 		"list": {
-			"default": "With {team, list}"
+			"default": "With {team, list}",
+			"long": "With {team, list, long}",
+			"short": "With {team, list, short}",
+			"narrow": "With {team, list, narrow}"
 		}
 	},
 	"customFormats": {

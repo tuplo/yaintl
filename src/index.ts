@@ -112,9 +112,9 @@ export default class I18n {
 			}
 			case 'list': {
 				const n = vs[value];
-				const fmt = dlv(this.#formats || {}, `list.${f}`, { timeStyle: f });
-				const df = new Intl.ListFormat(this.#locale, fmt);
-				v = df.format(n);
+				const fmt = dlv(this.#formats || {}, `list.${f}`, { style: f });
+				const lf = new Intl.ListFormat(this.#locale, fmt);
+				v = lf.format(n);
 				break;
 			}
 			default: {
