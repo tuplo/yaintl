@@ -1,15 +1,16 @@
 /* eslint-disable no-param-reassign */
-import dlv from 'dlv';
-import Parser, {
-	type MessagePlaceholder,
-	type MessageVariable,
-	type MessageAST,
+import type {
+	MessageAST,
+	MessagePlaceholder,
+	MessageVariable,
 } from '@ffz/icu-msgparser';
+import Parser from '@ffz/icu-msgparser';
+import dlv from 'dlv';
 
 import { getCardinal } from './helpers/cardinal';
 import { getOrdinal } from './helpers/ordinal';
 
-type Value = string | number | boolean | Date | string[] | number[];
+type Value = unknown;
 
 export type Formats = {
 	number?: Record<string, Intl.NumberFormatOptions>;
