@@ -1,4 +1,5 @@
-import I18n, { type Formats } from './index';
+import I18n from './index';
+import type { IFormats } from './index';
 import messages from './__data__/en.json';
 
 describe('yaintl', () => {
@@ -147,7 +148,7 @@ describe('yaintl', () => {
 			['number1', 'The value is 1.235E9.'],
 			['number2', 'The value is +1,234,567,890.'],
 		])('number: %s', (key, expected) => {
-			const formats: Formats = {
+			const formats: IFormats = {
 				number: {
 					fmtNumber1: { notation: 'scientific' },
 					fmtNumber2: { signDisplay: 'exceptZero' },
@@ -163,7 +164,7 @@ describe('yaintl', () => {
 			['date1', 'Sale begins 25 Dec'],
 			['date2', 'Sale begins December'],
 		])('date: %s', (key, expected) => {
-			const formats: Formats = {
+			const formats: IFormats = {
 				dateTime: {
 					fmtDate1: { day: 'numeric', month: 'short' },
 					fmtDate2: { month: 'long' },
@@ -179,7 +180,7 @@ describe('yaintl', () => {
 			['time1', 'Sale begins 23:30'],
 			['time2', 'Sale begins 15:30'],
 		])('time: %s', (key, expected) => {
-			const formats: Formats = {
+			const formats: IFormats = {
 				dateTime: {
 					fmtTime1: { timeStyle: 'short' },
 					fmtTime2: { timeZone: 'America/Los_Angeles', timeStyle: 'short' },
@@ -195,7 +196,7 @@ describe('yaintl', () => {
 			['list1', 'With Alice, Bob and Charlie'],
 			['list2', 'With Alice, Bob or Charlie'],
 		])('time: %s', (key, expected) => {
-			const formats: Formats = {
+			const formats: IFormats = {
 				list: {
 					fmtList1: { style: 'long' },
 					fmtList2: { type: 'disjunction' },

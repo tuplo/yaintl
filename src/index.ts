@@ -12,25 +12,25 @@ import { getOrdinal } from './helpers/ordinal';
 
 type Value = unknown;
 
-export type Formats = {
+export interface IFormats {
 	number?: Record<string, Intl.NumberFormatOptions>;
 	dateTime?: Record<string, Intl.DateTimeFormatOptions>;
 	list?: Record<string, Intl.ListFormatOptions>;
-};
+}
 
-type Args = {
+interface IArgs {
 	locale: string;
 	messages: object;
-	formats?: Formats;
-};
+	formats?: IFormats;
+}
 
 export default class I18n {
 	#locale: string;
 	#messages: object;
-	#formats?: Formats;
+	#formats?: IFormats;
 	#parser: Parser;
 
-	constructor(args: Args) {
+	constructor(args: IArgs) {
 		const { locale, messages, formats } = args;
 
 		this.#locale = locale;
