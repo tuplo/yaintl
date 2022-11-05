@@ -21,7 +21,7 @@ describe('getOrdinal', () => {
 			few: 'rd',
 			other: 'th',
 		};
-		const actual = getOrdinal(value, options, 'en');
+		const actual = getOrdinal(value, options, 'en-GB');
 		expect(actual).toBe(expected);
 	});
 
