@@ -3,12 +3,12 @@ import type {
 	MessageAST,
 	MessagePlaceholder,
 	MessageVariable,
-} from '@ffz/icu-msgparser';
-import Parser from '@ffz/icu-msgparser';
-import dlv from 'dlv';
+} from "@ffz/icu-msgparser";
+import Parser from "@ffz/icu-msgparser";
+import dlv from "dlv";
 
-import { getCardinal } from './helpers/cardinal';
-import { getOrdinal } from './helpers/ordinal';
+import { getCardinal } from "./helpers/cardinal";
+import { getOrdinal } from "./helpers/ordinal";
 
 type Value = unknown;
 
@@ -24,7 +24,7 @@ interface IArgs {
 	formats?: IFormats;
 }
 
-export default class I18n {
+class I18n {
 	#locale: string;
 	#messages: object;
 	#formats?: IFormats;
@@ -43,10 +43,10 @@ export default class I18n {
 		return (key: string, values?: Record<string, Value>) => {
 			const lookup = prefix ? dlv(this.#messages, prefix) : this.#messages;
 			const message = dlv(lookup, key);
-			if (!message) return [prefix, key].filter(Boolean).join('.');
+			if (!message) return [prefix, key].filter(Boolean).join(".");
 
 			const parsed = this.#parser.parse(message);
-			return parsed.map((p) => this.#resolve(p, values)).join('');
+			return parsed.map((p) => this.#resolve(p, values)).join("");
 		};
 	}
 
@@ -54,7 +54,7 @@ export default class I18n {
 		placeholder: Value | MessagePlaceholder,
 		values: Record<string, Value> = {}
 	): Value {
-		if (typeof placeholder !== 'object') {
+		if (typeof placeholder !== "object") {
 			return placeholder;
 		}
 
@@ -69,7 +69,7 @@ export default class I18n {
 		const vs = JSON.parse(JSON.stringify(values));
 
 		switch (type) {
-			case 'plural': {
+			case "plural": {
 				const n = Number(vs[value]);
 				const offset = Number(f || 0);
 				const c = getCardinal(n, options, offset, this.#locale);
@@ -77,18 +77,18 @@ export default class I18n {
 				v = options[c];
 				break;
 			}
-			case 'select': {
+			case "select": {
 				const n = `${vs[value]}`;
 				v = options[n] || options.other;
 				break;
 			}
-			case 'selectordinal': {
+			case "selectordinal": {
 				const n = Number(vs[value]);
 				const c = getOrdinal(n, options, this.#locale);
 				v = options[c];
 				break;
 			}
-			case 'number': {
+			case "number": {
 				const n = Number(vs[value]);
 				const dfOptions = dlv(this.#formats || {}, `number.${f}`, {
 					style: f,
@@ -97,21 +97,21 @@ export default class I18n {
 				v = nf.format(n);
 				break;
 			}
-			case 'date': {
+			case "date": {
 				const n = new Date(vs[value]);
 				const fmt = dlv(this.#formats || {}, `dateTime.${f}`, { dateStyle: f });
 				const df = new Intl.DateTimeFormat(this.#locale, fmt);
 				v = df.format(n);
 				break;
 			}
-			case 'time': {
+			case "time": {
 				const n = new Date(vs[value]);
 				const fmt = dlv(this.#formats || {}, `dateTime.${f}`, { timeStyle: f });
 				const df = new Intl.DateTimeFormat(this.#locale, fmt);
 				v = df.format(n);
 				break;
 			}
-			case 'list': {
+			case "list": {
 				const n = vs[value];
 				const fmt = dlv(this.#formats || {}, `list.${f}`, { style: f });
 				const lf = new Intl.ListFormat(this.#locale, fmt);
@@ -123,6 +123,8 @@ export default class I18n {
 			}
 		}
 
-		return Array.isArray(v) ? v.map((p) => this.#resolve(p, vs)).join('') : v;
+		return Array.isArray(v) ? v.map((p) => this.#resolve(p, vs)).join("") : v;
 	}
 }
+
+export default I18n;

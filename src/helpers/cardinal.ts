@@ -10,12 +10,12 @@ export function getCardinal(
 		return specificNumber;
 	}
 
-	const nn = typeof o !== 'undefined' ? n - Number(o) : n;
-	const pr = new Intl.PluralRules(locale, { type: 'cardinal' });
-	if (nn === 0 && 'zero' in options) {
-		return 'zero';
+	const nn = typeof o !== "undefined" ? n - Number(o) : n;
+	const pr = new Intl.PluralRules(locale, { type: "cardinal" });
+	if (nn === 0 && "zero" in options) {
+		return "zero";
 	}
 	const rule = pr.select(nn);
 
-	return rule in options ? rule : 'other';
+	return rule in options ? rule : "other";
 }

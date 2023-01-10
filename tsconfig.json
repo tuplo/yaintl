@@ -1,17 +1,18 @@
 {
   "compilerOptions": {
-    "allowJs": true,
-    "baseUrl": ".",
+    "baseUrl": "./",
+    "declaration": true,
     "esModuleInterop": true,
-    "isolatedModules": true,
-    "lib": ["esnext"],
-    "module": "esnext",
+    "lib": ["dom", "esnext"],
+    "module": "commonjs",
     "moduleResolution": "node",
+    "outDir": "./dist",
+    "removeComments": true,
     "resolveJsonModule": true,
     "strict": true,
-    "target": "es6",
-    "incremental": true,
+    "target": "es2019",
+    "types": ["vitest/globals"]
   },
-  "include": [ "src/**/*.ts" ],
-  "exclude": ["node_modules"]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules/**/*"]
 }

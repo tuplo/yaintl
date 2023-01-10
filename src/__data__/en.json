@@ -12,11 +12,6 @@
 		"default": "{gender, select, male {He} female {She} other {They}} liked this",
 		"required": "{gender, select, other {They}} like this"
 	},
-	"plural": {
-		"format": "{count, plural, =0 {There are no results.} one {There is one result.} other {There are # results.}}",
-		"offset": "{adds, plural, offset:1 =0 {No-one has added this} =1 {You added this} one {You and one other person added this} other {You and # others added this}}"
-	},
-	"selectordinal": "You are {pos, selectordinal, one {#st} two {#nd} few {#rd} other {#th}} in the queue.",
 	"defaultFormats": {
 		"number": {
 			"default": "The default value is {count, number}.",

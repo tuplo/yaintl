@@ -1,6 +1,6 @@
 /* eslint-disable no-use-before-define */
 
-declare module '@ffz/icu-msgparser' {
+declare module "@ffz/icu-msgparser" {
 	export default Parser;
 
 	function Parser(options?: ParserOptions): Parser;

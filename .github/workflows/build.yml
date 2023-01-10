@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [16.x, 18.x, 19.x]
+        node-version: [16.x, 18.x]
     steps:
       - uses: actions/checkout@main
         with:
@@ -64,7 +64,7 @@ jobs:
           yarn install --frozen-lockfile
           yarn build
       - name: Semantic Release
-        uses: cycjimmy/semantic-release-action@v2
+        uses: cycjimmy/semantic-release-action@main
         with:
           branch: main
         env:
