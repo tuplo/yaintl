@@ -13,6 +13,6 @@
     "target": "es2019",
     "types": ["vitest/globals"]
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "sh/**/*"],
   "exclude": ["node_modules/**/*"]
 }
