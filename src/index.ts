@@ -1,10 +1,9 @@
 /* eslint-disable no-param-reassign */
-import type {
-	MessageAST,
-	MessagePlaceholder,
-	MessageVariable,
+import Parser, {
+	type MessageAST,
+	type MessagePlaceholder,
+	type MessageVariable,
 } from "@ffz/icu-msgparser";
-import Parser from "@ffz/icu-msgparser";
 import dlv from "dlv";
 
 import { getCardinal } from "./helpers/cardinal";
