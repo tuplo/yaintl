@@ -1,6 +1,6 @@
 <br />
 <div align="center">
-  <img src="logo.png" alt="Logo" width="120" height="120">
+  <img src="docs/logo.png" alt="Logo" width="120" height="120" />
   <h1 align="center">yaintl</h3>
   <p align="center">Yet another i18n library with ICU message syntax (tiny footprint)</p>
   <p align="center">
@@ -37,6 +37,26 @@ const i18n = new I18n({
 const t = i18n.build('simple')
 
 t('message', { name: "Alice" }) // ⇒ "Hi Alice!"
+```
+
+
+### With React
+
+Using React.Context, we create a top-level component with a Provider holding all the i18n messages for the chosen locale. Then, on each component that needs it, we use a custom hook returning the i18n lookup/formatting function. 
+
+```typescript
+export function Greeting() {
+  const t = useI18n();
+  return <h1>{t("greeting", { name: "Oliver" })}</h1>;
+}
+
+// ⇒ "Fancy a cuppa, Oliver?" (en-GB)
+```
+
+See the example on: [`examples/react`](./examples/react).
+
+```bash
+npm run run:examples:react
 ```
 
 ## Message syntax

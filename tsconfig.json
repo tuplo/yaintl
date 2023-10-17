@@ -3,6 +3,7 @@
     "baseUrl": "./",
     "declaration": true,
     "esModuleInterop": true,
+    "jsx": "preserve", 
     "lib": ["dom", "esnext"],
     "module": "commonjs",
     "moduleResolution": "node",
@@ -11,8 +12,8 @@
     "resolveJsonModule": true,
     "strict": true,
     "target": "es2019",
-    "types": ["vitest/globals"]
+    "types": ["vitest/globals"],
   },
-  "include": ["src/**/*", "sh/**/*"],
+  "include": ["src/**/*", "sh/**/*", "examples/**/*"],
   "exclude": ["node_modules/**/*"]
 }

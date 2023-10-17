@@ -4,5 +4,5 @@
     "declaration": true,
     "outDir": "./dist",
   },
-  "exclude": ["node_modules/**/*", "**/*.test.ts", "sh/*"]
+  "exclude": ["node_modules/**/*", "**/*.test.ts", "sh/*", "examples/**/*"]
 }

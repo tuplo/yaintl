@@ -41,6 +41,7 @@
 		"format": "prettier --write src sh",
 		"lint:ts": "tsc --noEmit",
 		"lint": "eslint src --ext ts,tsx",
+		"run:examples:react": "tsx sh/run-examples-react.ts",
 		"test:ci": "TZ=utc vitest run",
 		"test": "TZ=utc vitest --watch"
 	},
@@ -52,6 +53,8 @@
 		"@tuplo/shell": "1.2.0",
 		"@types/dlv": "1.1.2",
 		"@types/node": "20.8.6",
+		"@types/react": "18.2.28",
+		"@types/react-dom": "18.2.13",
 		"@typescript-eslint/eslint-plugin": "6.8.0",
 		"@typescript-eslint/parser": "6.8.0",
 		"@vitest/coverage-v8": "0.34.6",
@@ -62,6 +65,8 @@
 		"eslint-plugin-import": "2.28.1",
 		"nyc": "15.1.0",
 		"prettier": "3.0.3",
+		"react": "18.2.0",
+		"react-dom": "18.2.0",
 		"tsx": "3.13.0",
 		"typescript": "5.2.2",
 		"vitest": "0.34.6"
