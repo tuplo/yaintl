@@ -1,6 +1,7 @@
-import { $ } from "@tuplo/shell";
+import shell from "@tuplo/shell";
 
 async function main() {
+	const $ = shell.$({ verbose: true });
 	await $`rm -rf dist`;
 
 	await $`tsc --build tsconfig.build.json`;

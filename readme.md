@@ -2,13 +2,12 @@
 <div align="center">
   <img src="logo.png" alt="Logo" width="120" height="120">
   <h1 align="center">yaintl</h3>
-  <p align="center">Yet another i18n library with ICU message syntax (tiny, no dependencies)</p>
+  <p align="center">Yet another i18n library with ICU message syntax (tiny footprint)</p>
   <p align="center">
     <img src="https://img.shields.io/npm/v/@tuplo/yaintl">
     <img src="https://img.shields.io/bundlephobia/minzip/@tuplo/yaintl">
   	 <a href="https://codeclimate.com/github/tuplo/yaintl/test_coverage">
   	   <img src="https://api.codeclimate.com/v1/badges/0437dcc3178212230976/test_coverage" /></a>
-  	 <img src="https://github.com/tuplo/yaintl/actions/workflows/build.yml/badge.svg">
   </p>
 </div>
 
