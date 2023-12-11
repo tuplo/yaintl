@@ -11,17 +11,17 @@ import { getOrdinal } from "./helpers/ordinal";
 
 type Value = unknown;
 
-export interface IFormats {
+export type IFormats = {
 	number?: Record<string, Intl.NumberFormatOptions>;
 	dateTime?: Record<string, Intl.DateTimeFormatOptions>;
 	list?: Record<string, Intl.ListFormatOptions>;
-}
+};
 
-interface IArgs {
+type IArgs = {
 	locale: string;
 	messages: object;
 	formats?: IFormats;
-}
+};
 
 class I18n {
 	#locale: string;
