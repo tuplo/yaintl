@@ -45,10 +45,50 @@ t('message', { name: "Alice" }) // ⇒ "Hi Alice!"
 Using React.Context, we create a top-level component with a Provider holding all the i18n messages for the chosen locale. Then, on each component that needs it, we use a custom hook returning the i18n lookup/formatting function. 
 
 ```typescript
-export function Greeting() {
+import { createContext, useContext } from "react";
+import I18n from "@tuplo/yaintl"
+
+const I18nContext = createContext({});
+
+const messages = {
+  "en-GB": { "greeting": "Fancy a cuppa, {name}?" },
+  "en-US": { "greeting": "Howdy, {name}!" },
+  "fr-FR": { "greeting": "Comment ça va, {name}?" },
+}
+
+function useI18n(prefix?: string) {
+  return useContext(I18nContext).build(prefix);
+}
+
+function Greeting() {
   const t = useI18n();
+
   return <h1>{t("greeting", { name: "Oliver" })}</h1>;
 }
+
+function App() {
+  const [locale, setLocale] = useState("en-GB");
+  const engine = new I18n({ locale, messages: messages[locale] });
+
+  const onChangeLocale = (event: ChangeEvent<HTMLSelectElement>) => {
+    setLocale(event.currentTarget.value);
+  };
+
+  return (
+    <I18nContext.Provider value={engine}>
+      <select onChange={onChangeLocale}>
+        <option value="en-GB">English (UK)</option>
+        <option value="en-US">English (US)</option>
+        <option value="fr-FR">French</option>
+      </select>
+      <Greeting name="Oliver" />
+    </I18nContext.Provider>
+  );
+}
+
+const domNode = document.getElementById("root");
+const root = createRoot(domNode as HTMLElement);
+root.render(<App />);
 
 // ⇒ "Fancy a cuppa, Oliver?" (en-GB)
 ```
