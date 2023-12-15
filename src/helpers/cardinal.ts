@@ -3,7 +3,7 @@ export function getCardinal(
 	n: number,
 	options: Record<string, unknown>,
 	o: number,
-	locale: string
+	locale: string,
 ) {
 	const specificNumber = `=${n}`;
 	if (specificNumber in options) {

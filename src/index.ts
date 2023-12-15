@@ -51,7 +51,7 @@ class I18n {
 
 	#resolve(
 		placeholder: Value | MessagePlaceholder,
-		values: Record<string, Value> = {}
+		values: Record<string, Value> = {},
 	): Value {
 		if (typeof placeholder !== "object") {
 			return placeholder;

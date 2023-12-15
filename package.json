@@ -38,7 +38,7 @@
 	"scripts": {
 		"build": "tsx sh/build.ts",
 		"coverage": "tsx sh/coverage.ts",
-		"format": "prettier --write src sh",
+		"format": "prettier --write src sh ./*.json",
 		"lint:ts": "tsc --noEmit",
 		"lint": "eslint src --ext ts,tsx",
 		"run:examples:react": "tsx sh/run-examples-react.ts",
